@@ -1,6 +1,6 @@
 # Weather
 
-This project is a progressive-web-app (PWA). It shows the current weatherstatus and information from Southtyrol, using the OpenDataHub-API (http://ipchannels.integreen-life.bz.it/meteorology/swagger-ui.html#/)
+This project is a progressive-web-app (PWA). It shows the current weatherstatus and information from South-Tyrol, using the OpenDataHub-API (http://ipchannels.integreen-life.bz.it/meteorology/swagger-ui.html#/)
 
 ## Using this repository
 
