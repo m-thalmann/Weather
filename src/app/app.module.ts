@@ -7,8 +7,8 @@ import { AppComponent } from './app.component';
 import { MaterialModule } from './material/material.module';
 import { MainNavComponent } from './main-nav/main-nav.component';
 import { LayoutModule } from '@angular/cdk/layout';
-import { MatToolbarModule, MatButtonModule, MatSidenavModule, MatIconModule, MatListModule } from '@angular/material';
 import { PageHomeComponent } from './page-home/page-home.component';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -22,11 +22,7 @@ import { PageHomeComponent } from './page-home/page-home.component';
     BrowserAnimationsModule,
     MaterialModule,
     LayoutModule,
-    MatToolbarModule,
-    MatButtonModule,
-    MatSidenavModule,
-    MatIconModule,
-    MatListModule
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]
