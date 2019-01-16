@@ -32,9 +32,4 @@ export class DirectionPipe implements PipeTransform {
       return value;
     }
   }
-
-  private parseDeg(deg: number){
-    return ((deg%360)+360)%360;
-  }
-
 }
