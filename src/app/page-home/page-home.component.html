@@ -1,8 +1,16 @@
 <main-nav>
   <h2>Home</h2>
 
+  <section id="random_data">
+    <h3>Random Data</h3>
+
+    <station-card [station]="station" *ngFor="let station of random_stations"></station-card>
+
+    <mat-spinner style="margin: 0 auto;" diameter="50" color="accent" *ngIf="random_stations == null"></mat-spinner>
+  </section>
+
+
   <!-- <mat-card *ngFor="let favorite of this.favorites.load()">
    
   </mat-card> -->
-  
 </main-nav>

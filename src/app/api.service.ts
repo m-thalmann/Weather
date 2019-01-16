@@ -3,7 +3,7 @@ import { HttpClient } from '@angular/common/http';
 
 const URL: string = "http://ipchannels.integreen-life.bz.it/meteorology/rest/";
 
-interface Station{
+export interface Station{
   _t: string,
   id: string,
   name: string,
@@ -13,10 +13,15 @@ interface Station{
   area: string
 }
 
-interface Record{
+export interface Record{
   timestamp: string,
   value: number,
   period: number
+}
+
+export interface RecordExtended extends Record{
+  name: string,
+  unit: string
 }
 
 @Injectable({

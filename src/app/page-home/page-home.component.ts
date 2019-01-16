@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { ApiService } from '../api.service';
+import { ApiService, Station } from '../api.service';
 import { FavoritesService } from '../favorites.service';
 
 @Component({
@@ -8,39 +8,26 @@ import { FavoritesService } from '../favorites.service';
   styleUrls: ['./page-home.component.scss']
 })
 export class PageHomeComponent {
+  random_stations: Station[] = null;
 
-  favorites_loaded = [];
-
-  constructor(private api: ApiService, private favorites: FavoritesService) { 
-    // favorites.load().forEach(el => {
-    //   api.newest_record({ station: el,  }).subscribe(val => {
-    //     console.log(val);
-        
-    //   },
-    //   err => {
-    //     console.error(err);
-        
-    //   });
-    // });
-    this.load();
+  constructor(private api: ApiService) {
+    this.load_random(2);
   }
 
-  async load(){
-    // let stations = await this.api.station_details().toPromise();
-    
-    // let data_types = [];
+  async load_random(amount: number){
+    this.random_stations = null;
 
-    // stations.forEach(el => {
-    //   data_types.push(this.api.data_types(el.id).toPromise().then(val => {
-    //     console.log(val);
-        
-    //   }));
-    // });
-
-    // await Promise.all(data_types);
     let stations = await this.api.station_details();
-    console.log(stations);
-    
+
+    let ret: Station[] = [];
+
+    for(let i = 0; i < amount; i++){
+      let pos = Math.floor(Math.random() * stations.length);
+      
+      ret.push(stations.splice(pos, 1)[0]);
+    }
+
+    this.random_stations = ret;
   }
 
 }

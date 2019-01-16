@@ -1,0 +1,10 @@
+mat-card{
+    margin-bottom: 1em;
+
+    mat-card-content{
+        i[mat-list-icon]{
+            width: 1.5em;
+            text-align: center;
+        }
+    }
+}

@@ -9,12 +9,22 @@ import { MainNavComponent } from './main-nav/main-nav.component';
 import { LayoutModule } from '@angular/cdk/layout';
 import { PageHomeComponent } from './page-home/page-home.component';
 import { HttpClientModule } from '@angular/common/http';
+import { StationCardComponent } from './station-card/station-card.component';
+import { TimestampPipe } from './timestamp.pipe';
+import { NormalcasePipe } from './normalcase.pipe';
+import { WeatherIconPipe } from './weather-icon.pipe';
+import { DirectionPipe } from './direction.pipe';
 
 @NgModule({
   declarations: [
     AppComponent,
     MainNavComponent,
-    PageHomeComponent
+    PageHomeComponent,
+    StationCardComponent,
+    TimestampPipe,
+    NormalcasePipe,
+    WeatherIconPipe,
+    DirectionPipe
   ],
   imports: [
     BrowserModule,
