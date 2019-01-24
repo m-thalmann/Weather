@@ -12,7 +12,7 @@ import { MatListModule, MatIconModule, MatSidenavModule, MatButtonModule, MatToo
     MatListModule,
     MatCardModule,
     MatProgressSpinnerModule,
-    MatTooltipModule
+    MatTooltipModule,
   ]
 })
 export class MaterialModule { }

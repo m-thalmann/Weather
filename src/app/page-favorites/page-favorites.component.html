@@ -1,0 +1,11 @@
+<main-nav>
+  <h2>Favorites</h2>
+
+  <section id="favorites">
+    <station-card [station]="station" preload="false" *ngFor="let station of favorites_stations" (favorationStatus)="favoration_changed($event)"></station-card>
+
+    <p *ngIf="favorites_stations != null && favorites_stations.length == 0" style="font-style: italic"><i class="fas fa-meh-rolling-eyes"></i> No favorites</p>
+
+    <mat-spinner style="margin: 0 auto" diameter="50" color="accent" *ngIf="favorites_stations == null"></mat-spinner>
+  </section>
+</main-nav>

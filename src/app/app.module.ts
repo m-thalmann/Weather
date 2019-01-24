@@ -14,6 +14,7 @@ import { TimestampPipe } from './timestamp.pipe';
 import { NormalcasePipe } from './normalcase.pipe';
 import { WeatherIconPipe } from './weather-icon.pipe';
 import { DirectionPipe } from './direction.pipe';
+import { PageFavoritesComponent } from './page-favorites/page-favorites.component';
 
 @NgModule({
   declarations: [
@@ -24,7 +25,8 @@ import { DirectionPipe } from './direction.pipe';
     TimestampPipe,
     NormalcasePipe,
     WeatherIconPipe,
-    DirectionPipe
+    DirectionPipe,
+    PageFavoritesComponent,
   ],
   imports: [
     BrowserModule,

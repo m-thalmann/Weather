@@ -1,5 +1,9 @@
 mat-card{
-    margin-bottom: 1em;
+    margin-top: 1em;
+
+    .spacer{
+        flex: 1 1 auto;
+    }
 
     mat-card-content{
         i[mat-list-icon]{

@@ -18,10 +18,10 @@ export class WeatherIconPipe implements PipeTransform {
     "air-humidity": "smog",
     "hydrometric-level": "cloud-meatball",
     "snow-level": "snowflake",
-    "flow-rate": "",
+    "flow-rate": "water",
     "atmospheric-pressure": "tachometer-alt",
     "rainfall-duration": "cloud-rain",
-    "dew-point-temperature": "",
+    "dew-point-temperature": "temperature-low",
   }
 
   transform(value: any): string {
