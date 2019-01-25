@@ -9,7 +9,7 @@ import { FavoritesService } from '../favorites.service';
 })
 export class StationCardComponent implements OnInit{
   private _station: Station = null;
-  private opened: boolean = false;
+  opened: boolean = false;
   records: RecordExtended[] = null;
 
   @Output() favorationStatus = new EventEmitter<{
@@ -73,7 +73,7 @@ export class StationCardComponent implements OnInit{
     this.records = ret;
   }
 
-  constructor(private api: ApiService, private favorites: FavoritesService){
+  constructor(private api: ApiService, public favorites: FavoritesService){
   }
 
   ngOnInit() {

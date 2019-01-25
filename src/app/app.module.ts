@@ -15,6 +15,9 @@ import { NormalcasePipe } from './normalcase.pipe';
 import { WeatherIconPipe } from './weather-icon.pipe';
 import { DirectionPipe } from './direction.pipe';
 import { PageFavoritesComponent } from './page-favorites/page-favorites.component';
+import { PageSettingsComponent } from './page-settings/page-settings.component';
+import { PageSearchComponent } from './page-search/page-search.component';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -27,6 +30,8 @@ import { PageFavoritesComponent } from './page-favorites/page-favorites.componen
     WeatherIconPipe,
     DirectionPipe,
     PageFavoritesComponent,
+    PageSettingsComponent,
+    PageSearchComponent,
   ],
   imports: [
     BrowserModule,
@@ -34,7 +39,8 @@ import { PageFavoritesComponent } from './page-favorites/page-favorites.componen
     BrowserAnimationsModule,
     MaterialModule,
     LayoutModule,
-    HttpClientModule
+    HttpClientModule,
+    FormsModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

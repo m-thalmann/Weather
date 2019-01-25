@@ -1,0 +1,21 @@
+h2{
+    margin: 0.2rem 0;
+}
+
+mat-form-field{
+    width: 100%;
+    display: block;
+
+    mat-icon[matSuffix]{
+        cursor: pointer;
+        user-select: none;
+
+        &:hover{
+            color: #707070;
+        }
+
+        &:active{
+            transform: scale(0.9);
+        }
+    }
+}

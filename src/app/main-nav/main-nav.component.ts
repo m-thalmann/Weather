@@ -17,4 +17,8 @@ export class MainNavComponent {
 
   constructor(private breakpointObserver: BreakpointObserver) {}
 
+  showAbout(){
+    // TODO:
+  }
+
 }

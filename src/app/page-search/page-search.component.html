@@ -1,0 +1,18 @@
+<main-nav>
+  <h2>Search</h2>
+
+  <mat-form-field id="search_container">
+    <input matInput placeholder="e.g. Bozen" [(ngModel)]="search_string" autocomplete="off" #search_field (keyup.enter)="doSearch()">
+    <mat-icon matSuffix (click)="doSearch()">search</mat-icon>
+  </mat-form-field>
+
+  <section id="results">
+    <div *ngIf="results != null && results.length > 0">Results: {{ results.length }}</div>
+
+    <station-card [station]="station" *ngFor="let station of results"></station-card>
+
+    <div *ngIf="results != null && results.length == 0" style="font-style: italic;"><i class="fas fa-exclamation-circle"></i> No results found</div>
+
+    <mat-spinner style="margin: 1em auto;" diameter="30" color="accent" *ngIf="loading"></mat-spinner>
+  </section>
+</main-nav>

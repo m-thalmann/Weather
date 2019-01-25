@@ -3,6 +3,8 @@ import { HttpClient } from '@angular/common/http';
 
 const URL: string = "http://ipchannels.integreen-life.bz.it/meteorology/rest/";
 
+const CACHE_MAX_AGE: number = 10;
+
 export interface Station{
   _t: string,
   id: string,
@@ -28,6 +30,11 @@ export interface RecordExtended extends Record{
   providedIn: 'root'
 })
 export class ApiService {
+  private cache: {
+    values: Station[],
+    timestamp: string
+  } = null;
+
   constructor(private http: HttpClient) {}
 
   async stations(){
@@ -35,10 +42,30 @@ export class ApiService {
     return ret;
   }
 
-  async station_details(data_types: boolean = false){
+  async station_details(){
     let ret = await this.http.get<Station[]>(URL + "get-station-details").toPromise();
+
+    this.cacheResult(ret);
     
     return ret;
+  }
+
+  async filter_stations(search: string, use_cache: boolean = true){
+    let ret: Station[] = null;
+
+    if(!use_cache || this.cache == null || this.cache_expired){
+      await this.station_details();
+    }
+
+    ret = this.cache.values;
+
+    search = search.toLowerCase();
+
+    return ret.filter(el =>
+      (el.name && el.name.toLowerCase().indexOf(search) >= 0) || 
+      (el.municipality && el.municipality.toLowerCase().indexOf(search) >= 0) || 
+      (el.area && el.area.toLowerCase().indexOf(search) >= 0)
+    );    
   }
 
   async data_types(station: string){
@@ -119,5 +146,16 @@ export class ApiService {
     }).toPromise();
 
     return ret;
+  }
+
+  private cacheResult(res: Station[]){
+    this.cache = {
+      values: res,
+      timestamp: new Date().toISOString()
+    }
+  }
+
+  private get cache_expired(){
+    return this.cache == null || (new Date(this.cache.timestamp).valueOf() < (new Date().valueOf() - 60000 * CACHE_MAX_AGE));
   }
 }
