@@ -13,14 +13,14 @@
   }
 
   mat-nav-list a[mat-list-item]{
-    i{
+    mat-icon{
       margin-right: 5px;
       width: 0;
       transition: width 0.2s;
       overflow: hidden;
     }
 
-    &:hover i, &.current i{
+    &:hover mat-icon, &.current mat-icon{
       width: 1.5em;
     }
 
