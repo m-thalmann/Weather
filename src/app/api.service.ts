@@ -42,7 +42,7 @@ export class ApiService {
   }
 
   async station_details(use_cache: boolean = null){
-    if((use_cache == undefined && (this.cache == null || this.cache_expired)) || use_cache == false){
+    if((use_cache != false && this.cache_expired) || use_cache == false){
       let ret = await this.http.get<Station[]>(URL + "get-station-details").toPromise();
   
       this.cacheResult(ret);
