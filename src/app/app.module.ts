@@ -18,6 +18,7 @@ import { PageFavoritesComponent } from './page-favorites/page-favorites.componen
 import { PageSettingsComponent } from './page-settings/page-settings.component';
 import { PageSearchComponent } from './page-search/page-search.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { AboutOverlayComponent } from './about-overlay/about-overlay.component';
 
 @NgModule({
   declarations: [
@@ -32,6 +33,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     PageFavoritesComponent,
     PageSettingsComponent,
     PageSearchComponent,
+    AboutOverlayComponent,
   ],
   imports: [
     BrowserModule,
@@ -44,6 +46,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     ReactiveFormsModule,
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+  entryComponents: [AboutOverlayComponent]
 })
 export class AppModule { }

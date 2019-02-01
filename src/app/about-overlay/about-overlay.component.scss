@@ -1,0 +1,12 @@
+mat-dialog-content{
+    text-align: justify;
+
+    a{
+        transition: color 0.2s;
+        color: #2c76a8;
+        
+        &:hover{
+            color: #3394d4;
+        }
+    }
+}

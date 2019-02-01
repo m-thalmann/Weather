@@ -2,6 +2,8 @@ import { Component } from '@angular/core';
 import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
+import { MatDialog } from '@angular/material';
+import { AboutOverlayComponent } from '../about-overlay/about-overlay.component';
 
 @Component({
   selector: 'main-nav',
@@ -15,10 +17,10 @@ export class MainNavComponent {
       map(result => result.matches)
     );
 
-  constructor(private breakpointObserver: BreakpointObserver) {}
+  constructor(private breakpointObserver: BreakpointObserver, private dialog: MatDialog) {}
 
   showAbout(){
-    // TODO:
+    this.dialog.open(AboutOverlayComponent);
   }
 
 }
