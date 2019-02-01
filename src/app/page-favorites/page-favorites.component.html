@@ -6,7 +6,7 @@
 
     <p *ngIf="favorites_stations != null && favorites_stations.length == 0" style="font-style: italic"><i class="fas fa-meh-rolling-eyes"></i> No favorites</p>
 
-    <mat-spinner style="margin: 0 auto" diameter="50" color="accent" *ngIf="favorites_stations == null"></mat-spinner>
+    <mat-spinner style="margin: 0 auto" diameter="50" color="accent" *ngIf="favorites_stations == null && !loading_error"></mat-spinner>
     <div *ngIf="loading_error">A error occured. Are you offline?</div>
   </section>
 </main-nav>
