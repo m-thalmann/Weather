@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { SettingsService } from './settings.service';
 
-const URL: string = "http://ipchannels.integreen-life.bz.it/meteorology/rest/";
+const URL: string = "https://ipchannels.integreen-life.bz.it/meteorology/rest/";
 
 export interface Station{
   _t: string,

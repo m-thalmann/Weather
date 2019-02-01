@@ -10,11 +10,11 @@
       <mat-icon *ngIf="opened">expand_less</mat-icon>
     </button>
     
-    <a [href]="'https://maps.google.com/maps?q=' + station.latitude + ',' + station.longitude + '&hl=en;z=14;output=embed'" target="_blank" mat-icon-button>
+    <a [href]="'https://maps.google.com/maps?q=' + station.latitude + ',' + station.longitude + '&hl=en;z=14;output=embed'" target="_blank" rel="noopener" mat-icon-button>
       <mat-icon>map</mat-icon>
     </a>
 
-    <button mat-icon-button (click)="toggleFavorite()" id="btn_add_favorite">
+    <button mat-icon-button (click)="toggleFavorite()">
       <mat-icon *ngIf="favorites.is(station.id)">star</mat-icon>
       <mat-icon *ngIf="!favorites.is(station.id)">star_border</mat-icon>
     </button>

@@ -4,6 +4,7 @@
   <section id="random_data">
     <station-card [station]="station" preload="false" *ngFor="let station of random_stations"></station-card>
 
-    <mat-spinner style="margin: 0 auto" diameter="50" color="accent" *ngIf="random_stations == null"></mat-spinner>
+    <mat-spinner style="margin: 0 auto" diameter="50" color="accent" *ngIf="random_stations == null && !loading_error"></mat-spinner>
+    <p *ngIf="loading_error" id="loading_error">A error occured. Are you offline?</p>
   </section>
 </main-nav>

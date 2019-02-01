@@ -19,6 +19,8 @@ import { PageSettingsComponent } from './page-settings/page-settings.component';
 import { PageSearchComponent } from './page-search/page-search.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AboutOverlayComponent } from './about-overlay/about-overlay.component';
+import { ServiceWorkerModule } from '@angular/service-worker';
+import { environment } from '../environments/environment';
 
 @NgModule({
   declarations: [
@@ -44,6 +46,7 @@ import { AboutOverlayComponent } from './about-overlay/about-overlay.component';
     HttpClientModule,
     FormsModule,
     ReactiveFormsModule,
+    ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production }),
   ],
   providers: [],
   bootstrap: [AppComponent],

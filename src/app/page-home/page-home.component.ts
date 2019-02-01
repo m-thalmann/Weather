@@ -9,25 +9,31 @@ import { SettingsService } from '../settings.service';
 })
 export class PageHomeComponent {
   random_stations: Station[] = null;
+  loading_error: boolean = false;
 
   constructor(private api: ApiService, private settings: SettingsService) {
     this.load_random(this.settings.home_amount);
   }
 
   async load_random(amount: number){
-    this.random_stations = null;
-
-    let stations = await this.api.station_details();
-
-    let ret: Station[] = [];
-
-    for(let i = 0; i < amount; i++){
-      let pos = Math.floor(Math.random() * stations.length);
-      
-      ret.push(stations.splice(pos, 1)[0]);
+    try{
+      this.random_stations = null;
+  
+      let stations = await this.api.station_details();
+  
+      let ret: Station[] = [];
+  
+      for(let i = 0; i < amount; i++){
+        let pos = Math.floor(Math.random() * stations.length);
+        
+        ret.push(stations.splice(pos, 1)[0]);
+      }
+  
+      this.random_stations = ret;
+      this.loading_error = false;
+    }catch(e){
+      this.loading_error = true;
     }
-
-    this.random_stations = ret;
   }
 
 }
