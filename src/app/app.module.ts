@@ -18,7 +18,6 @@ import { PageFavoritesComponent } from './page-favorites/page-favorites.componen
 import { PageSettingsComponent } from './page-settings/page-settings.component';
 import { PageSearchComponent } from './page-search/page-search.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { PageGraphComponent } from './page-graph/page-graph.component';
 
 @NgModule({
   declarations: [
@@ -33,7 +32,6 @@ import { PageGraphComponent } from './page-graph/page-graph.component';
     PageFavoritesComponent,
     PageSettingsComponent,
     PageSearchComponent,
-    PageGraphComponent,
   ],
   imports: [
     BrowserModule,
