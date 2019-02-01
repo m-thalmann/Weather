@@ -1,9 +1,8 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import { SettingsService } from './settings.service';
 
 const URL: string = "http://ipchannels.integreen-life.bz.it/meteorology/rest/";
-
-const CACHE_MAX_AGE: number = 10;
 
 export interface Station{
   _t: string,
@@ -35,7 +34,7 @@ export class ApiService {
     timestamp: string
   } = null;
 
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient, private settings: SettingsService) {}
 
   async stations(){
     let ret = await this.http.get<string[]>(URL + "get-stations").toPromise();
@@ -156,6 +155,6 @@ export class ApiService {
   }
 
   private get cache_expired(){
-    return this.cache == null || (new Date(this.cache.timestamp).valueOf() < (new Date().valueOf() - 60000 * CACHE_MAX_AGE));
+    return this.cache == null || (new Date(this.cache.timestamp).valueOf() < (new Date().valueOf() - 60000 * this.settings.cache_max_age));
   }
 }

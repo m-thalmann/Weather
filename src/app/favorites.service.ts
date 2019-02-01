@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { StorageService } from './storage.service';
 
-const FAVORITES: string = "FAVORITES";
+const FAVORITES: string = "WE_FAVORITES";
 
 @Injectable({
   providedIn: 'root'

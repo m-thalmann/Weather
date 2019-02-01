@@ -17,7 +17,7 @@ import { DirectionPipe } from './direction.pipe';
 import { PageFavoritesComponent } from './page-favorites/page-favorites.component';
 import { PageSettingsComponent } from './page-settings/page-settings.component';
 import { PageSearchComponent } from './page-search/page-search.component';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { PageGraphComponent } from './page-graph/page-graph.component';
 
 @NgModule({
@@ -43,6 +43,7 @@ import { PageGraphComponent } from './page-graph/page-graph.component';
     LayoutModule,
     HttpClientModule,
     FormsModule,
+    ReactiveFormsModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

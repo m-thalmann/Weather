@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { ApiService, Station } from '../api.service';
+import { SettingsService } from '../settings.service';
 
 @Component({
   selector: 'app-page-home',
@@ -9,8 +10,8 @@ import { ApiService, Station } from '../api.service';
 export class PageHomeComponent {
   random_stations: Station[] = null;
 
-  constructor(private api: ApiService) {
-    this.load_random(5);
+  constructor(private api: ApiService, private settings: SettingsService) {
+    this.load_random(this.settings.home_amount);
   }
 
   async load_random(amount: number){
