@@ -41,22 +41,20 @@ export class ApiService {
     return ret;
   }
 
-  async station_details(){
-    let ret = await this.http.get<Station[]>(URL + "get-station-details").toPromise();
-
-    this.cacheResult(ret);
+  async station_details(use_cache: boolean = null){
+    if((use_cache == undefined && (this.cache == null || this.cache_expired)) || use_cache == false){
+      let ret = await this.http.get<Station[]>(URL + "get-station-details").toPromise();
+  
+      this.cacheResult(ret);
+    }
     
-    return ret;
+    return this.cache.values;
   }
 
   async filter_stations(search: string, use_cache: boolean = true){
     let ret: Station[] = null;
 
-    if(!use_cache || this.cache == null || this.cache_expired){
-      await this.station_details();
-    }
-
-    ret = this.cache.values;
+    ret = await this.station_details(use_cache);;
 
     search = search.toLowerCase();
 
