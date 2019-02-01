@@ -12,6 +12,7 @@
     <station-card [station]="station" *ngFor="let station of results"></station-card>
 
     <div *ngIf="results != null && results.length == 0" style="font-style: italic;"><i class="fas fa-exclamation-circle"></i> No results found</div>
+    <div *ngIf="loading_error">A error occured. Are you offline?</div>
 
     <mat-spinner style="margin: 1em auto;" diameter="30" color="accent" *ngIf="loading"></mat-spinner>
   </section>

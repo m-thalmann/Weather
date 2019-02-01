@@ -33,6 +33,7 @@ export class PageHomeComponent {
       this.loading_error = false;
     }catch(e){
       this.loading_error = true;
+      console.error('Error loading stations:', e);
     }
   }
 

@@ -12,6 +12,8 @@ export class StationCardComponent implements OnInit{
   opened: boolean = false;
   records: RecordExtended[] = null;
 
+  loading_error: boolean = false;
+
   @Output() favorationStatus = new EventEmitter<{
     status: boolean,
     id: string
@@ -47,30 +49,36 @@ export class StationCardComponent implements OnInit{
   }
 
   private async loadRecords(){
-    this.records = null;
-
-    let ret: RecordExtended[] = [];
-
-    let data_types = await this.api.data_types(this.station.id);
-
-    await Promise.all(
-      data_types.map(async el => {
-        let record = await this.api.newest_record({
-          station: this._station.id,
-          type: el[0]
-        });
-
-        ret.push({
-          name: el[0],
-          unit: el[1],
-          value: record.value,
-          timestamp: record.timestamp,
-          period: record.period
-        });
-      })
-    );
-
-    this.records = ret;
+    try{
+      this.records = null;
+  
+      let ret: RecordExtended[] = [];
+  
+      let data_types = await this.api.data_types(this.station.id);
+  
+      await Promise.all(
+        data_types.map(async el => {
+          let record = await this.api.newest_record({
+            station: this._station.id,
+            type: el[0]
+          });
+  
+          ret.push({
+            name: el[0],
+            unit: el[1],
+            value: record.value,
+            timestamp: record.timestamp,
+            period: record.period
+          });
+        })
+      );
+  
+      this.records = ret;
+      this.loading_error = false;
+    }catch(e){
+      this.loading_error = true;
+      console.error('Error loading records:', e);
+    }
   }
 
   constructor(private api: ApiService, public favorites: FavoritesService){

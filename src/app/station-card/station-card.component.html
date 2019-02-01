@@ -31,6 +31,7 @@
       <mat-list-item *ngIf="records != null && records.length == 0">No data</mat-list-item>
     </mat-list>
 
-    <mat-spinner style="margin: 0 auto;" diameter="30" color="accent" *ngIf="records == null"></mat-spinner>
+    <mat-spinner style="margin: 0 auto;" diameter="30" color="accent" *ngIf="records == null && !loading_error"></mat-spinner>
+    <div *ngIf="loading_error">A error occured. Are you offline?</div>
   </mat-card-content>
 </mat-card>

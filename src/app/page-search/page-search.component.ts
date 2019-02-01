@@ -12,6 +12,7 @@ export class PageSearchComponent {
   results: Station[] = null;
 
   loading: boolean = false;
+  loading_error: boolean = false;
   
   constructor(private api: ApiService, private route: ActivatedRoute, private router: Router) {
     this.route.params.subscribe(params => {
@@ -25,16 +26,23 @@ export class PageSearchComponent {
   }
 
   private async search(){
-    if(this.loading || this.search_string == null || this.search_string.trim().length == 0){
-      return;
+    try{
+      if(this.loading || this.search_string == null || this.search_string.trim().length == 0){
+        return;
+      }
+  
+      this.loading = true;
+      this.results = null;
+  
+      this.results = await this.api.filter_stations(this.search_string);
+  
+      this.loading_error = false;
+    }catch(e){
+      this.loading_error = true;
+      console.error('Error loading results:', e);
+    }finally{
+      this.loading = false;
     }
-
-    this.loading = true;
-    this.results = null;
-
-    this.results = await this.api.filter_stations(this.search_string);
-
-    this.loading = false;
   }
 
 }

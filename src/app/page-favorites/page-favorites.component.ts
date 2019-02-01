@@ -8,38 +8,45 @@ import { FavoritesService } from '../favorites.service';
   styleUrls: ['./page-favorites.component.scss']
 })
 export class PageFavoritesComponent {
-
   favorites_stations: Station[] = null;
+  
+  loading_error: boolean = false;
 
   constructor(private api: ApiService, private favorites: FavoritesService) {
     this.load_favorites();
   }
 
   async load_favorites(){
-    this.favorites_stations = null;
-
-    let stations = this.favorites.load();
-
-    if(stations.length == 0){
-      this.favorites_stations = [];
-      return;
-    }
-
-    let stations_loaded = await this.api.station_details();
-
-    let ret: Station[] = [];
-
-    for(let i = 0; i < stations.length; i++){
-      let pos = stations_loaded.map(el => el.id).indexOf(stations[i]);
-      
-      if(pos >= 0){
-        ret.push(stations_loaded[pos]);
-      }else{
-        this.favorites.remove(stations[i]);
+    try{
+      this.favorites_stations = null;
+  
+      let stations = this.favorites.load();
+  
+      if(stations.length == 0){
+        this.favorites_stations = [];
+        return;
       }
+  
+      let stations_loaded = await this.api.station_details();
+  
+      let ret: Station[] = [];
+  
+      for(let i = 0; i < stations.length; i++){
+        let pos = stations_loaded.map(el => el.id).indexOf(stations[i]);
+        
+        if(pos >= 0){
+          ret.push(stations_loaded[pos]);
+        }else{
+          this.favorites.remove(stations[i]);
+        }
+      }
+  
+      this.favorites_stations = ret;
+      this.loading_error = false;
+    }catch(e){
+      this.loading_error = true;
+      console.error('Error loading favorites:', e);
     }
-
-    this.favorites_stations = ret;
   }
 
   favoration_changed(f : { status: boolean, id: string }){
